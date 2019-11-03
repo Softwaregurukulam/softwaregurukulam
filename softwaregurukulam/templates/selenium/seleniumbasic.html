@@ -1,0 +1,241 @@
+{% extends 'base/contentbase.html' %}
+
+{% block title %} Software Gurukulam
+{% endblock %}
+
+{% block content %}	
+	{% if user.is_authenticated %}
+  		<div class="leftcolumn">
+  			<center><h3>Selenium Basics</h3></center>
+  			 <div class="card">
+      			<h2>Instantiating objects and variables</h2>
+		      	<p><h4>For firefox driver</h4>
+		      	<ul>
+		      	<li>System.setProperty("webdriver.firefox.marionette","C:\\geckodriver.exe");</li>
+		   		<li>WebDriver driver = new FirefoxDriver();</li>
+		      	</ul>
+		      	</p>
+		      	<p><h4>For chrome driver</h4><ul>
+		      	<li>System.setProperty("webdriver.chrome.driver","G:\\chromedriver.exe");</li>
+		      	<li>WebDriver driver = new ChromeDriver();</li>
+		      	</ul>
+		      	</p>
+    		</div>
+    
+    		<div class="card">
+      			<h2>Launching browser</h2>
+		      	<p>driver.get(URL);</p>
+    		</div>
+    		
+    		<div class="card">
+    			<h2>Locator</h2>
+    			<p>
+    			<ol>
+    			<li>By.className</li>
+    			<li>By.cssSelector</li>
+    			<li>By.id</li>
+    			<li>By.linkText</li>
+    			<li>By.name</li>
+    			<li>By.partialLinkText</li>
+    			<li>By.tagName</li>
+    			<li>By.xpath</li>
+    			</ol>
+    			</p>
+    		</div>
+    		
+    		
+    		<div class="card">
+    			<h2>Navigate commands</h2>
+    			<p>
+    			<ol>
+    			<li>navigate().to()</li>
+    			<li>navigate().refresh()</li>
+    			<li>navigate().back()</li>
+    			<li>navigate().forward()</li>
+    			</ol>
+    			</p>
+    		</div>
+    		
+    		
+    		<div class="card">
+    			<h2>Close and quit</h2>
+    			<p>
+    			<ul>
+    			<li>close() -It closes only the browser window that WebDriver is currently controlling</li>
+    			<li>quit() -It closes all windows that webdriver has opened</li>
+    			</ul>
+    			</p>
+    		</div>
+    		
+    		<div class="card">
+      			<h2>Switching between frames</h2>
+		      	<p>driver.switchTo().frame()</p>
+    		</div>
+    		
+    		<div class="card">
+      			<h2>Pop- up</h2>
+		      	<p>driver.switchTo().alert().accept()</p>
+    		</div>
+    		 		 
+    		<div class="card">
+    			<h2>Waits</h2>
+    			<p>
+    			<ol>
+    			<li>Implicit wait</li>
+    			<li>Explicit wait</li>    			
+    			</ol>
+    			
+    			<h4>Implicit wait</h4>
+    			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    			<h4>Explicit wait</h4>
+    			WebDriverWait myWaitVar = new WebDriverWait(driver,10); <br />
+    			myWaitVar.until(ExpectedConditions.visibilityOfElementLocated(By.id("username")));
+    			</p>
+    		</div>
+    		
+    		<div class="card">
+    			<h2>Conditions</h2>
+    			<p>
+    			<ol>
+    			<li>isEnabled()</li>
+    			<li>isDisplayed()</li>
+    			<li>isSelected()</li>
+    			</ol>
+    			</p>
+    		</div>
+    		
+    		<div class="card">
+    			<h2>Expected Conditions</h2>
+    			<p>
+    			<ol>
+    			<li>alertIsPresent()</li>
+    			<li>elementToBeClickable()</li>
+    			<li>visibilityOfElementLocated()</li>
+    			<li>frameToBeAvailableAndSwitchToIt()</li>
+    			</ol>
+    			</p>
+    		</div>
+    		
+    		<div class="card">
+    			<h2>Input Values</h2>
+    			<p>
+    			WebElement	email  = driver.findElement(By.id("Email"));<br />
+    			email.sendKeys("abc@gmail.com");
+    			</p> 
+    		</div> 
+    		
+    		<div class="card">
+      			<h2>Deleting Values</h2>
+		      	<p>email.clear()</p>
+    		</div>
+    		
+    		<div class="card">
+      			<h2>Click and submit</h2>
+		      	<p>login.click()<br />
+		      	login.submit()
+		      	</p>
+    		</div>
+    		
+    		<div class="card">
+    			<h2>Radio Button</h2>
+    			<p>
+    			radio1.click()<br />
+				radio2.click() 
+    			</p>
+    		</div>
+    		
+    		<div class="card">
+    			<h2>Check Box</h2>
+    			<p>
+    			chkbtn.click() 
+    			</p>
+    		</div>
+    		
+    		<div class="card">
+    			<h2>Select</h2>
+    			<p>
+    			Select fruits = new Select(driver.findElement(By.id("fruits")));<br />
+				fruits.selectByVisibleText("Banana");<br />
+				fruits.selectByValue("Banana");<br />
+ 				fruits.selectByIndex(1);
+    			</p>
+    		</div>
+    		
+    		<div class="card">
+    			<h2>Mouse and keyboard events</h2>
+    			<p>
+    			Actions builder = new Actions(driver);<br />
+				Action mouseOver = builder.moveToElement(link_Menu).build();<br />
+				mouseOver.perform();<br />
+    			
+    			<h4>Events</h4>
+    			<ol>
+    				<li>clickAndHold()</li>
+    				<li>contextClick()</li>
+    				<li>doubleClick()</li>
+    				<li>dragAndDrop(source, target)</li>
+    				<li>dragAndDropBy(source, x-offset, y-offset)</li>
+    				<li>keyUp(modifier _key)</li>
+    				<li>keyDown(modifier_key)</li>
+    				<li>moveByOffset(x-offset, y-offset)</li>
+    				<li>moveToElement(toElement)</li>
+    				<li>release()</li>
+    				<li>sendKeys(onElement, charsequence)</li>
+    			</ol>
+    			</p>
+    		</div>
+    		
+    		<div class="card">
+    			<h2>Alert</h2>
+    			<ul>
+    			<li>driver.switchTo().alert().accept();</li>
+    			<li>driver.switchTo().alert().dismiss();</li>
+    			<li>driver.switchTo().alert().getText();</li>
+    			<li>driver.switchTo().alert().sendKeys("Text");</li>
+    			</ul>
+    		</div>
+    		
+    		<div class="card">
+    			<h2>Window Handle</h2>
+    			String MainWindow= driver.getWindowHandle();<br />
+    			Set<String> s=driver.getWindowHandles();<br />		
+				Iterator<String> i=s.iterator();<br />		
+				while(i.hasNext())<br />			
+    			{<br />
+    			&emsp;String ChildWindow=i.next();<br />
+    			&emsp;if(!MainWindow.equalsIgnoreCase(ChildWindow))<br />
+    			&emsp;{<br />
+    			&emsp;&emsp;driver.switchTo().window(ChildWindow); // Switching to Child window <br />
+    			&emsp;&emsp;driver.close(); // Closing the Child Window <br />
+    			&emsp;}<br />
+    			}<br />
+    			driver.switchTo().window(MainWindow); // Switching to Parent window <br />
+    		</div>
+    		
+    		<div class="card">
+    			<h2>Assert</h2>
+    			<p>
+    			Assert failed, Test execution is aborted <br /><br />
+    			Assert.assertEquals(Expected, Actual);
+    			</p>
+    		</div>
+    		
+    		<div class="card">
+    			<h2>Verify</h2>
+    			<p>
+    			Verify failed, Test execute by logging a failure <br /><br />
+    			if(ele.isDisplayed())<br />
+    			{<br />
+    			&emsp;System.out.println("Test Case Passed");<br />
+    			}<br />
+    			else<br />
+    			{<br />
+    			&emsp;System.out.println("Test Case Failed");<br />
+    			}<br /><br /><br />
+    			</p>
+    		</div>
+    	</div>
+    {% else %}
+	  		<p>You are not logged in</p>
+	{% endif %}
+ {% endblock %}

@@ -1,0 +1,111 @@
+{% extends 'base/contentbase.html' %}
+
+{% block title %} Software Gurukulam
+{% endblock %}
+
+{% block content %}	
+	{% if user.is_authenticated %}
+  		<div class="leftcolumn">
+  			<center><h3>Django Basics</h3></center>
+  			 <div class="card">
+      			<h2>MVT Framework</h2>
+		      	<p><h4>URL</h4>
+		      	HTTP request use URL Mapper to send data to corresponding view<br /><br />
+		      	from django.conf.urls import url<br />
+		      	urlpatterns = [<br />
+    			&emsp;url(r'^signup/', views.SignUp, name='signup'),<br />
+    			]<br /></p>
+    			<p><h4>View</h4>
+		      	A view receives HTTP requests, access data via models and returns HTTP responses.<br /><br />
+		      	from django.http import HttpResponse<br />
+		      	return render(request, 'signup.html')<br /></p>
+		      	<p><h4>Models</h4>
+		      	Models are Python objects defining an application's data structure. They provide options to create, edit and query data records in the database.<br /><br />
+		      	from django.db import models<br />
+		      	class Category(models.Model):<br />
+    			&emsp;name = models.CharField(max_length=128, unique=True) <br />
+    			&emsp;designation = models.CharField(max_length=256, blank=True)<br />
+    			&emsp;def __str__(self):<br />
+        		&emsp;&emsp;return self.name<br /></p>
+        		<p><h4>Templates</h4>
+		      	Templates define the structure of a file layout to represent data in a web page.<br /></p>
+    		</div>
+    		
+    		<div class="card">
+      			<h2>Create project</h2>
+		      	<p>django-admin startproject projectname</p>
+    		</div>
+    		
+    		<div class="card">
+      			<h2>Create app</h2>
+		      	<p>python manage.py startapp appname</p>
+    		</div>
+    		
+    		<div class="card">
+      			<h2>Migration</h2>
+		      	<p>python manage.py makemigrations<br />
+		      	python manage.py migrate</p>
+    		</div>
+    		
+    		<div class="card">
+      			<h2>Run server</h2>
+		      	<p>python manage.py runserver</p>
+		      	<ul>
+		      	<li>Using port: python manage.py runserver 8989</li>
+		   		<li>Using port: python manage.py runserver 127.10.10.10:8001</li>
+		      	</ul>
+		      	<p>Configure the server IP using ALLOWED_HOST configuration in settings.py<br />
+		      	ALLOWED_HOSTS = ['127.0.0.1','127.10.10.10:8001']
+		      	</p>
+    		</div>
+    		
+    		<div class="card">
+      			<h2>URL Pattern</h2>
+		      	<p>
+		      	from django.conf.urls import url<br />
+				from . import views<br />
+				<br />
+				urlpatterns = [<br />
+				&emsp;url('app/2020/', views.year_2020), ## Each path is written with url() <br />
+				&emsp;url('app/&lt;int:year&gt;/', views.year_record), ## Captured value is converted to int <br />
+				&emsp;url('app/&lt;int:year&gt;/&lt;int:month&gt;/&lt;slug:slug&gt;/', views.year_detail), ## Captured value is converted to int & slug <br />
+				]<br />
+		      	</p>
+		      	<p><h4>Alternate Pattern Definition</h4>
+		      	<ul>
+		      	<li>(?P&lt;name&gt;pattern) named group</li>
+		   		<li>(pattern) unnamed group</li>
+		      	</ul>
+		      	from django.conf.urls import url<br />
+				from . import views<br />
+				<br />
+				urlpatterns = [<br />
+				&emsp;url('app/(?P&lt;year&gt;[0-9]{4})/(?P&lt;month&gt;[0-9]{2})/(?P&lt;slug&gt;[\w-_]+)/', views.year_detail),  <br />
+				]<br />
+		      	</p>
+		      	<p><h4>Grouping URL Pathern</h4>
+		      	<ul>
+		      	<li>/user/view</li>
+		   		<li>/user/add</li>
+		   		<li>/user/update</li>
+		      	</ul>
+		      	from django.conf.urls import url<br />
+				from . import views<br />
+				<br />
+				urlpatterns = [<br />
+				&emsp;url('user/',include('user.urls',)),  <br />
+				]<br />
+		      	</p>
+    		</div>
+    		
+    		<div class="card">
+      			<h2>Sessions</h2>
+		      	<p>
+		      	</p>
+    		</div>
+    		<br /><br /><br />
+    	</div>
+    {% else %}
+	  		<p>You are not logged in</p>
+	{% endif %}
+ {% endblock %}

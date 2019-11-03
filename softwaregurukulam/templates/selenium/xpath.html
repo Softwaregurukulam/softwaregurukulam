@@ -1,0 +1,136 @@
+{% extends 'base/contentbase.html' %}
+
+{% block title %} Software Gurukulam
+{% endblock %}
+
+{% block content %}	
+	{% if user.is_authenticated %}
+  		<div class="leftcolumn">
+  			<center><h3>Selenium Xpath</h3></center>
+    		<div class="card">
+      			<h2>Syntax</h2>
+      			<p>
+      			xpath = //tagname[@Attribute='Value']
+      			</p>
+      		</div>
+      		<div class="card">
+      			<h2>Types</h2>
+      			<p>
+		      	<ol>
+		      	<li>Absolute xpath</li>
+		   		<li>Relative xpath</li>
+		      	</ol>
+		      	</p>
+    		</div>
+    		<div class="card">
+    			<h2>Absolute xpath</h2>
+    			<p>
+    				/html/body/div[1]/h2
+    			</p> 
+    		</div>
+    		<div class="card">
+    			<h2>Relative xpath</h2>
+    			<p>
+    				//h2[contains(text(),'Selenium Xpath')]
+    			</p>
+    		</div>
+    		<div class="card">
+      			<h2>Types</h2>
+      			<table>
+      			<tr>
+      				<td>
+      				Basic xpath
+      				</td>
+      				<td>
+      				//input[@name='id']
+      				</td>
+      			</tr>
+      			<tr>
+      				<td>
+      				Contains
+      				</td>
+      				<td>
+      				//h2[contains(text(),'Selenium Xpath')]
+      				</td>
+      			</tr>
+      			<tr>
+      				<td>
+      				Using OR
+      				</td>
+      				<td>
+      				//button[@type='submit' or @name='login']
+      				</td>
+      			</tr>
+      			<tr>
+      				<td>
+      				Using AND
+      				</td>
+      				<td>
+      				//button[@type='submit' and @name='login']
+      				</td>
+      			</tr>
+      			<tr>
+      				<td>
+      				Start-with&emsp;&emsp;&emsp;&emsp;
+      				</td>
+      				<td>
+      				//h2[starts-with(text(),'Selenium')]
+      				</td>
+      			</tr>
+      			<tr>
+      				<td>
+      				Text
+      				</td>
+      				<td>
+      				//h2[text()='Absolute xpath']
+      				</td>
+      			</tr>
+      			</table>
+    		</div>
+    		<div class="card">
+    			<h2>Advance Xpath</h2>
+    			<h4>Contains</h4>
+    			<p>
+    			//h2[contains(text(),'Selenium Xpath')]<br />
+    			</p>
+    			
+    			<h4>Following sibling</h4>
+    			<p>
+    			//div[@class='leftcolumn']//following-sibling::h2<br />
+    			</p>
+    			
+    			<h4>Preceding sibling</h4>
+    			<p>
+    			//div[@class='leftcolumn']//preceding-sibling::h2<br />
+    			</p>
+    			
+    			<h4>Ancestor</h4>
+    			<p>
+    			//div[@class='leftcolumn']//ancestor::div//following-sibling::table<br />
+    			</p>
+    			
+    			<h4>Parent</h4>
+    			<p>
+    			//body//div[5]//parent::div
+    			</p>
+    			
+    			<h4>Following axes</h4>
+    			<p>
+    			//*[@type='text']//following::input
+    			</p>
+    			
+    			<h4>Preceding axes</h4>
+    			<p>
+    			//*[@type='submit']//preceding::input
+    			</p>
+    			
+    			<h4>Descending axes</h4>
+    			<p>
+    			//*[@id='course']//descendant::a
+    			</p><br/><br/>
+    		</div>
+        </div>
+  	{% else %}
+	  		<p>You are not logged in</p>
+	{% endif %}	
+ {% endblock %}

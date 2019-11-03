@@ -1,0 +1,217 @@
+{% extends 'base/contentbase.html' %}
+
+{% block title %} Software Gurukulam
+{% endblock %}
+
+{% block content %}	
+	{% if user.is_authenticated %}
+ 		<div class="leftcolumn">
+ 			<center><h3>TestNG</h3></center>
+ 			
+ 			<div class="card">
+   			<h2>TestNG report</h2>
+   			<p>
+   			<ol>
+   			<li>Emailable report</li>
+   			<li>Index.html</li>
+   			<li>Reporter Class</li>
+   			</ol>
+   			</p>
+   		</div>
+   		
+ 			 <div class="card">
+     			<h2>Annotations</h2>
+	      	<p>
+	      	<ul>
+	      	<li>@BeforeSuite: This annotated method will be run before all tests in the suite.</li>
+	   		<li>@AfterSuite: This annotated method will be run after all tests in the suite.</li>
+	   		<li>@BeforeTest: This annotated method will be run before any test in the class.</li>
+	   		<li>@AfterTest: This annotated method will be run after any test in the class.</li>
+	   		<li>@BeforeGroups: This annotated method will run before the first test method in the group is invoked.</li>
+	   		<li>@AfterGroups: This annotated method will run after the last test method in the groups is invoked.</li>
+	   		<li>@BeforeClass: The annotated method will run before the first test method in the class is invoked.</li>
+			<li>@AfterClass: The annotated method will run after the last test method in the current class have been run.</li>
+			<li>@BeforeMethod: The annotated method will be run before each test method.</li>
+			<li>@AfterMethod: The annotated method will be run after each test method.</li>
+			<li>@Test: The annotated method is a part of a test case.</li>
+	   		</li>
+	      	</ul>
+	      	</p>
+   		</div>
+   
+   		<div class="card">
+     			<h2>Execution sequence</h2>
+	      	<p>
+	      	<ul>
+	      	<li>BeforeSuite</li>
+	      	<li>BeforeTest</li>
+	      	<li>BeforeClass</li>
+	      	<li>BeforeMethod</li>
+	      	<li>Test</li>
+	      	<li>AfterMethod</li>
+	      	<li>AfterClass</li>
+	      	<li>AfterTest</li>
+	      	<li>AfterSuite</li>
+	      	</ul>
+	      	</p>
+   		</div>
+   		
+   		<div class="card">
+   			<h2>Execution Sequence Program</h2>
+   			<h4>seleniumtest.java</h4>
+   			package com;
+			<br/>
+			<br/>import org.testng.annotations.AfterClass;
+			<br/>import org.testng.annotations.Test;
+			<br/>import org.testng.annotations.BeforeClass;
+			<br/>import org.testng.annotations.AfterMethod;
+			<br/>import org.testng.annotations.AfterSuite;
+			<br/>import org.testng.annotations.AfterTest;
+			<br/>import org.testng.annotations.BeforeMethod;
+			<br/>import org.testng.annotations.BeforeSuite;
+			<br/>import org.testng.annotations.BeforeTest;
+			<br/>
+			<br/>public class seleniumtest {
+			<br/>
+   			<br/>&emsp;//Test case 1
+   			<br/>&emsp;@Test
+   			<br/>&emsp;public void testCase1() 
+   			<br/>&emsp;{
+      		<br/>&emsp;&emsp;System.out.println("Test case 1");
+   			<br/>&emsp;}
+			<br/>
+	   		<br/>&emsp;//Test case 2
+   			<br/>&emsp;@Test
+   			<br/>&emsp;public void testCase2() 
+   			<br/>&emsp;{
+      		<br/>&emsp;&emsp;System.out.println("Test case 2");
+   			<br/>&emsp;}
+			<br/>
+   			<br/>&emsp;@BeforeMethod
+   			<br/>&emsp;public void beforeMethod() 
+   			<br/>&emsp;{
+      		<br/>&emsp;&emsp;System.out.println("BeforeMethod");
+   			<br/>&emsp;}
+			<br/>
+   			<br/>&emsp;@AfterMethod
+   			<br/>&emsp;public void afterMethod() 
+   			<br/>&emsp;{
+      		<br/>&emsp;&emsp;System.out.println("AfterMethod");
+   			<br/>&emsp;}
+			<br/>
+   			<br/>&emsp;@BeforeClass
+   			<br/>&emsp;public void beforeClass() 
+   			<br/>&emsp;{
+      		<br/>&emsp;&emsp;System.out.println("BeforeClass");
+   			<br/>&emsp;}
+			<br/>
+   			<br/>&emsp;@AfterClass
+   			<br/>&emsp;public void afterClass() 
+   			<br/>&emsp;{
+      		<br/>&emsp;&emsp;System.out.println("AfterClass");
+   			<br/>&emsp;}
+			<br/>
+   			<br/>&emsp;@BeforeTest
+   			<br/>&emsp;public void beforeTest() 
+   			<br/>&emsp;{
+      		<br/>&emsp;&emsp;System.out.println("BeforeTest");
+   			<br/>&emsp;}
+			<br/>
+   			<br/>&emsp;@AfterTest
+   			<br/>&emsp;public void afterTest() 
+   			<br/>&emsp;{
+      		<br/>&emsp;&emsp;System.out.println("AfterTest");
+   			<br/>&emsp;}
+			<br/>
+   			<br/>&emsp;@BeforeSuite
+   			<br/>&emsp;public void beforeSuite() 
+   			<br/>&emsp;{
+      		<br/>&emsp;&emsp;System.out.println("BeforeSuite");
+   			<br/>&emsp;}
+			<br/>	
+  		 	<br/>&emsp;@AfterSuite
+   			<br/>&emsp;public void afterSuite() 
+   			<br/>&emsp;{
+      		<br/>&emsp;&emsp;System.out.println("AfterSuite");
+   			<br/>&emsp;}
+			<br/>}
+			<br/>
+			
+			<h4>Console Output</h4>
+			[RemoteTestNG] detected TestNG version 7.0.0
+			<br/>BeforeSuite
+			<br/>BeforeTest
+			<br/>BeforeClass
+			<br/>BeforeMethod
+			<br/>Test case 1
+			<br/>AfterMethod
+			<br/>BeforeMethod
+			<br/>Test case 2
+			<br/>AfterMethod
+			<br/>AfterClass
+			<br/>AfterTest
+			<br/>AfterSuite
+			<br/>
+			<br/>===============================================
+			<br/>Suite
+			<br/>Total tests run: 2, Passes: 2, Failures: 0, Skips: 0
+			<br/>===============================================
+			
+   		</div>
+   		
+   		<div class="card">
+   			<h2>Test case grouping program</h2>
+   			<h4>seleniumtest.java</h4>
+   			package com;
+			<br/>
+			<br/>import org.testng.annotations.Test;
+			<br/>
+			<br/>public class seleniumtest 
+			<br/>{
+			<br/>&emsp;@Test (groups = { "Car" })
+			<br/>&emsp;public void Car1() 
+			<br/>&emsp;{
+			<br/>&emsp;&emsp;System.out.println("Test car 1");
+			<br/>&emsp;}
+			<br/>
+			<br/>&emsp;@Test (groups = { "Car" })
+			<br/>&emsp;public void Car2() 
+			<br/>&emsp;{
+	 		<br/>&emsp;&emsp;System.out.println("Test car 2");
+			<br/>&emsp;}
+			<br/>
+			<br/>&emsp;@Test (groups = { "Bike" })
+			<br/>&emsp;public void Bike1() 
+			<br/>&emsp;{
+	 		<br/>&emsp;&emsp;System.out.println("Test bike 1");
+			<br/>&emsp;}
+			<br/>
+			<br/>&emsp;@Test (groups = { "Bike" })
+			<br/>&emsp;public void Bike2() 
+			<br/>&emsp;{
+	 		<br/>&emsp;&emsp;System.out.println("Test bike 2");
+			<br/>&emsp;}
+			<br/>
+			<br/>&emsp;@Test (groups = { "Car", "Bike" })
+			<br/>&emsp;public void bothcarandbike() 
+			<br/>&emsp;{
+	  		<br/>&emsp;&emsp;System.out.println("Test car & bike");
+			<br/>&emsp;}
+			<br/>}
+			<br/>
+			<h4>Console Output</h4>
+			[RemoteTestNG] detected TestNG version 7.0.0
+			<br/>Test car 1
+			<br/>Test car 2
+			<br/>Test car & bike
+			<br/>
+			<br/>===============================================
+			<br/>Suite
+			<br/>Total tests run: 3, Passes: 3, Failures: 0, Skips: 0
+			<br/>===============================================
+   		</div><br/><br/>
+      	</div>
+    {% else %}
+	  		<p>You are not logged in</p>
+	{% endif %}
+ {% endblock %}

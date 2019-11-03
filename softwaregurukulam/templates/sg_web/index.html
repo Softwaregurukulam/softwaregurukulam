@@ -1,0 +1,37 @@
+{% extends 'base/pagebase.html' %}
+
+{% block title %} Software Gurukulam
+{% endblock %}
+
+{% block content %}	
+	<div class="header">
+	  <a href="#default" class="logo">Software Gurukulam</a>
+	  <div class="header-right">
+	  	{% if user.is_authenticated %}
+	    <a class="active" href="#home">Home</a>
+	    <a href="/sg_web/contactus/">Contact</a>
+	    <a href="/sg_web/about/">About</a>
+	    <a href="{% url 'logout' %}">Logout</a>
+	    {% else %}
+	    <a href="{% url 'login' %}">Login</a>
+	    {% endif %}
+	    
+	  </div>
+	</div>
+	
+	<div style="padding-left:20px">
+		{% if user.is_authenticated %}
+			<h3>Course Content</h3>
+	  		{% if categories %}
+		        	{% for category in categories %}<a href="/sg_web/category/{{ category.slug }}"><img src="/static/images/{{ category.name }}.jpg" alt="Picture of {{ category.name }}" style="width:128px;height:128px;"/></a>
+		        	{% if forloop.counter == 8 %}<br />{% endif %}
+		        	{% endfor %}
+		    {% else %}
+		        <strong>There are no categories present.</strong>
+		    {% endif %}
+		    
+	  	{% else %}
+	  		<p>You are not logged in</p>
+		{% endif %}
+	</div>
+{% endblock %}

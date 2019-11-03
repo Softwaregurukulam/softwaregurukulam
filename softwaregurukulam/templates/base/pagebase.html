@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+{% load staticfiles %} <!-- New line -->
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {box-sizing: border-box;}
+
+table, th, td {
+  border: 1px solid black;
+  padding: 5px;
+}
+
+h3 { 
+  color: #00D8EF;
+}
+
+table {
+  border-spacing: 15px;
+}
+
+body { 
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+  overflow: hidden;
+  background-color: #808080;
+  padding: 20px 10px;
+}
+
+.header a {
+  float: left;
+  color: #dddddd;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px; 
+  line-height: 25px;
+  border-radius: 4px;
+}
+
+.header a.logo {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.header a:hover {
+  background-color: #555555;
+  color: black;
+}
+
+.header a.active {
+  background-color: green;
+  color: white;
+}
+
+.header-right {
+  float: right;
+}
+
+/* Footer */
+	.footer {
+	  padding: 10px;
+	  position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      background-color: #808080;
+      color: white;
+   	  text-align: right;
+	}
+
+@media screen and (max-width: 500px) {
+  .header a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  
+  .header-right {
+    float: none;
+  }
+  
+  	
+  
+}
+</style>
+<title>{% block title %}Rango{% endblock %}</title>
+</head>
+<body>
+	{% block content %}{% endblock %}
+	<div class="footer">
+		  @Software-gurukulam
+	</div>
+</body>
+</html>
